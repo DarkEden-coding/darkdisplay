@@ -5,30 +5,25 @@ This is a package that can make notifis and overlays in an easy way
 from darkdisplay.notification import DisplayNotification
 
 # make an example notification
-notification = DisplayNotification(
+DisplayNotification(
     message="Hello World!",
-    show_button=True,
-    button_text="Click Me!",
+    title_text="Title",
     window_size="250x150",
+    window_timeout=5, # time for the window to stay open in seconds
     debug=True
 )
 
 # auto displays and does not return anything
-# to wait until the notification is displayed do this:
-from darkdisplay.notification import wait_until_closed
-
-wait_until_closed(notification)
-
-# to get button input you can use this example:
-while notification.running:
-    if notification.button_function:
-        # CODE you want to run
-        # at the end reset the button
-        notification.button_function = False
-    else:
-        # sleep to reduce cpu overhead
-        sleep(.01)
-        pass
+# to wait until the notification is done displaying pass wait_until_closed=True, for example:
+# make an example notification
+DisplayNotification(
+    message="Hello World!",
+    title_text="Title",
+    window_size="250x150",
+    debug=True,
+    window_timeout=5,
+    wait_until_closed=True,
+)
 ```
 ### example overlay:
 ```python
