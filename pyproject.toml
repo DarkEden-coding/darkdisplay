@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "darkdisplay"
-version = "0.0.4"
+version = "0.0.8"
 authors = [
   { name="Dark_Eden", email="darkedenc9@gmail.com" },
 ]

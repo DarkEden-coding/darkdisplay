@@ -6,9 +6,15 @@ from threading import Thread
 
 # function to display tkinter notification window
 class DisplayNotification:
-
-    def __init__(self, message="", show_button=False, button_text="", icon_path=None, window_size="250x150",
-                 debug=False):
+    def __init__(
+        self,
+        message="",
+        show_button=False,
+        button_text="",
+        icon_path=None,
+        window_size="250x150",
+        debug=False,
+    ):
         """
         displays a custom tkinter notification window
         :param message: message to display in notification window
@@ -47,9 +53,7 @@ class DisplayNotification:
 
         if self.show_button:
             title_label = customtkinter.CTkButton(
-                frame,
-                text=self.button_text,
-                command=self.set_button_function
+                frame, text=self.button_text, command=self.set_button_function
             )
             title_label.pack(pady=(20, 10))
 
@@ -57,7 +61,9 @@ class DisplayNotification:
             message_label = customtkinter.CTkLabel(frame, text=self.message)
             message_label.pack()
         else:
-            message_label = customtkinter.CTkLabel(frame, text=self.message, anchor="center")
+            message_label = customtkinter.CTkLabel(
+                frame, text=self.message, anchor="center"
+            )
             message_label.pack(padx=10, pady=10)
 
         self.root.after(0, self.update_focus)
@@ -94,9 +100,9 @@ class DisplayNotification:
             hwnd = win32gui.GetWindow(hwnd, 2)
 
         if self.debug:
-            print(f"focus set to: {window_names[1]}...")
+            print(f"focus set to: {window_names[0]}...")
         # Find the handle of the window with the specified title
-        hwnd = win32gui.FindWindow(None, window_names[1])
+        hwnd = win32gui.FindWindow(None, window_names[0])
         # Give focus to the window
         win32gui.SetForegroundWindow(hwnd)
 
